@@ -85,9 +85,9 @@ class InvertedResidual(nn.Module):
 
         return out
 
-class Net1(nn.Module):
+class mini_ShuffleNet(nn.Module):
     def __init__(self, stages_out_channels, stages_repeats, num_classes=2):
-        super(Net1, self).__init__()
+        super(mini_ShuffleNet, self).__init__()
 
         self._stage_out_channels = stages_out_channels
 
@@ -112,11 +112,11 @@ class Net1(nn.Module):
             input_channels = output_channels
 
         output_channels = self._stage_out_channels[-1]
-        """last_conv_name = 'conv%i'%len(stages_out_channels)
+        last_conv_name = 'conv%i'%len(stages_out_channels)
         seq = [nn.Conv2d(input_channels, output_channels, 1, 1, 0, bias=False),
             nn.BatchNorm2d(output_channels),
             nn.ReLU(inplace=True)]
-        setattr(self, last_conv_name, nn.Sequential(*seq))"""
+        setattr(self, last_conv_name, nn.Sequential(*seq))
         input_channels = output_channels
         """inter_channels = 256
         output_channels = 128

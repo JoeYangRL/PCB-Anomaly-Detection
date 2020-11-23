@@ -9,10 +9,10 @@ from PIL import Image
 import numpy as np
 import torch.optim as optim
 import os
-from build_dataset import Mydataset, Mydataset_test, split_data, cal_mean_and_std, read_and_preprocess, read_and_preprocess_test
+from contrast.build_dataset import Mydataset, Mydataset_test, split_data, cal_mean_and_std, read_and_preprocess, read_and_preprocess_test
 import matplotlib.pyplot as plt
 import datetime
-from build_model import Net1, get_parameter_number
+from build_model import mini_ShuffleNet, get_parameter_number
 try:
     import cPickle
 except:
@@ -274,7 +274,7 @@ def main():
     test_loader = DataLoader(test_data, batch_size=int(batch_size/2), shuffle=True, drop_last=True)
     print('data prepared.')
 
-    net = Net1([24, 48, 96, 192, 1024], [1, 1, 1])
+    net = mini_ShuffleNet([24, 48, 96, 192, 1024], [1, 1, 1])
     f1 = open(path+ '/net_structure.txt', 'a')
     f1.write(str(net)+ '\n')
     total_num, trainable_num = get_parameter_number(net)

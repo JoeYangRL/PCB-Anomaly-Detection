@@ -19,8 +19,6 @@ filepath = r"E:\research\PCB Anomaly Detection\data\rebuild_datas_0906"
 label_file = r'E:\research\PCB Anomaly Detection\data\rebuild_datas_0906\label.txt'
 train_file = r'E:\research\PCB Anomaly Detection\code\logs\test-20201115171133.txt'
 
-
-
 def split_data(label_file,timestamp,save_txt_path='',val_prop=0.1,test_prop=0.2):
 
     """
